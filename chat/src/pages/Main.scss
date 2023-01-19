@@ -1,7 +1,35 @@
 .chat {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 1076px;
+    height: 500px;
+    padding: 3px;
+    padding-right: 5px;
+
     &__wrapper {
+        display: flex;
+        flex-direction: column;
         width: 100%;
         border: 1px solid #4478ff;
-        border-radius: 50%;
+        border-radius: 20px;
+        height: 100%;
+        &__nav {
+            width: 100%;
+        }
+    }
+
+    &__communion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 1084px;
+    }
+
+    &__notification {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 22px;
+        font-family: 'Montserrat', sans-serif;
     }
 }

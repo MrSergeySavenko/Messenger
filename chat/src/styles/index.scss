@@ -1,3 +1,9 @@
 @import './reset.scss';
 
 @import '../pages/Main.scss';
+@import '../components/NavBar/navBar.scss';
+@import '../components/TextChat/textChat.scss';
+
+body {
+    background-color: #f5f5f5;
+}
