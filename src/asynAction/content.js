@@ -5,7 +5,7 @@ export const fetchChats = () => {
         fetch('http://localhost:3001/chats')
             .then((resolve) => resolve.json())
             .then((loading) => dispatch(getChatsAction(loading)))
-            .then((data) => dispatch(getLoadingAction(data)))
+            .then((chats) => dispatch(getLoadingAction(chats)))
             .catch((error) => dispatch(getFailureAction(error)));
     };
 };
