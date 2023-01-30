@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavBar } from '../components/ChatNavBar/ChatNavBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { fetchChats } from '../asynAction/content';
 import { useEffect } from 'react';
 
@@ -11,9 +10,7 @@ function Chat() {
         dispatch(fetchChats());
     });
 
-    const chats = useSelector((state) => state.messageReducer.chats);
-    const isLoading = useSelector((state) => state.messageReducer.isLoading);
-    const error = useSelector((state) => state.messageReducer.error);
+    const { chats, isLoading, error } = useSelector((state) => state.messageReducer);
 
     console.log(chats.length);
 

@@ -1,35 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChatDropdawn } from '../ChatDropdawn/ChatDropdawn';
-import { useDispatch, useSelector } from 'react-redux';
-import { openDropdawnAction, closeDropedawnAction } from '../../store/dropdawnReduser';
 
 export const NavBar = () => {
-    const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
 
-    const open = useSelector((state) => state.dropdawnReduser.open);
+    const onClose = () => {
+        setOpen(false);
+        // console.log(open);
+    };
 
     return (
         <div className='nav'>
             <p className='nav__head'>Чатик</p>
             <div>
-                {open ? (
-                    <ChatDropdawn
-                        onClick={(e) => {
-                            dispatch(closeDropedawnAction(e.target));
-                            console.log(open);
-                        }}
-                    />
-                ) : (
-                    <button
-                        className='nav__button'
-                        onClick={() => {
-                            dispatch(openDropdawnAction());
-                            console.log(open);
-                        }}
-                    >
-                        ВСЕ ЧАТЫ
-                    </button>
-                )}
+                <button
+                    className='nav__button'
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        console.log(open);
+                        setOpen(true);
+                    }}
+                >
+                    ВСЕ ЧАТЫ
+                </button>
+                {open && <ChatDropdawn open={open} setOpen={setOpen} onClose={onClose} />}
             </div>
         </div>
     );
