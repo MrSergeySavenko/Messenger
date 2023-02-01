@@ -8,16 +8,17 @@ function Chat() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchChats());
-    });
+    }, []);
 
     const { chats, isLoading, error } = useSelector((state) => state.messageReducer);
 
+    console.log(chats);
     console.log(chats.length);
 
     const renderHeader = () => {
         if (isLoading) {
             return <div className='chat__notification'>Загрузка...</div>;
-        } else if (chats) {
+        } else if (chats.length !== 0) {
             return <div className='chat__notification'>Выберите чат</div>;
         } else {
             return <div className='chat__notification'>У вас нет ни одного чата</div>;
@@ -38,13 +39,3 @@ function Chat() {
 }
 
 export default Chat;
-
-// {
-//     isLoading ? (
-//         <div className='chat__notification'>Загрузка...</div>
-//     ) : chats.length === 0 ? (
-//         <div className='chat__notification'>У вас нет ни одного чата</div>
-//     ) : (
-//         <div className='chat__notification'>Выберите чат</div>
-//     );
-// }

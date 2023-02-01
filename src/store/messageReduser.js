@@ -11,10 +11,10 @@ const GET_FAILURE = 'GET_FAILURE';
 
 export const messageReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case GET_CHATS:
-            return { ...state, isLoading: false };
         case GET_LOADING:
-            return { ...state, chats: action.payload };
+            return { ...state, isLoading: true };
+        case GET_CHATS:
+            return { ...state, isLoading: false, chats: [action.payload] };
         case GET_FAILURE:
             return { ...state, isFalure: true, error: action.payload };
 
@@ -23,6 +23,6 @@ export const messageReducer = (state = defaultState, action) => {
     }
 };
 
-export const getChatsAction = () => ({ type: GET_CHATS });
-export const getLoadingAction = (payload) => ({ type: GET_LOADING, payload });
+export const getLoadingAction = () => ({ type: GET_LOADING });
+export const getChatsAction = (payload) => ({ type: GET_CHATS, payload });
 export const getFailureAction = (payload) => ({ type: GET_FAILURE, payload });

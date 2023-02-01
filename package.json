@@ -21,7 +21,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "server": "json-server --delay 5000 -w mock/db.json -p 3001"
+        "server": "json-server --delay 2000 -w mock/db.json -p 3001"
     },
     "eslintConfig": {
         "extends": [
@@ -40,5 +40,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "json-server": "^0.17.1"
     }
 }

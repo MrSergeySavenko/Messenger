@@ -23,7 +23,7 @@ export const NavBar = () => {
                 >
                     ВСЕ ЧАТЫ
                 </button>
-                {open && <ChatDropdawn open={open} setOpen={setOpen} onClose={onClose} />}
+                {open && <ChatDropdawn open={open} onClose={onClose} />}
             </div>
         </div>
     );
