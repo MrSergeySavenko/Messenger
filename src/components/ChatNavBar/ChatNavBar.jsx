@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { ChatDropdawn } from '../ChatDropdawn/ChatDropdawn';
+import { ChatDropdown } from '../ChatDropdown/ChatDropdown';
 
 export const NavBar = () => {
     const [open, setOpen] = useState(false);
 
     const onClose = () => {
         setOpen(false);
-        // console.log(open);
     };
 
     return (
@@ -17,13 +16,12 @@ export const NavBar = () => {
                     className='nav__button'
                     onClick={(e) => {
                         e.stopPropagation();
-                        console.log(open);
                         setOpen(true);
                     }}
                 >
                     ВСЕ ЧАТЫ
                 </button>
-                {open && <ChatDropdawn open={open} onClose={onClose} />}
+                {open && <ChatDropdown open={open} onClose={onClose} />}
             </div>
         </div>
     );

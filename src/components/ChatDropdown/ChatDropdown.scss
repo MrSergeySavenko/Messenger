@@ -21,6 +21,8 @@
 
     &__chats {
         width: 432px;
+        overflow-y: scroll;
+        margin-bottom: 10px;
     }
 
     &__create {
@@ -34,5 +36,21 @@
         font-weight: 500;
         font-size: 14px;
         color: #fff;
+        cursor: pointer;
+    }
+
+    &__chat-name {
+        background: #f2f2f7;
+        padding: 16px 0 16px 20px;
+        font-size: 14px;
+        line-height: 17px;
+        font-family: 'Inter';
+        font-weight: 500;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        &__chat-name:last-child {
+            margin: 0;
+        }
     }
 }
