@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavBar } from '../components/ChatNavBar/ChatNavBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchChats } from '../asynAction/content';
+import { fetchChats } from '../__data__/actions/messageActions';
 import { useEffect } from 'react';
 import { ChatField } from '../components/ChatField/ChatField';
 

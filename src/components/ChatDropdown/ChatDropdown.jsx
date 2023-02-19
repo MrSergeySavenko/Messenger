@@ -1,14 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveIdAction } from '../../store/messageReduser';
-import { uniqueKey } from '../../utils';
+import { addNewChat, setActiveIdAction } from '../../__data__/actions/messageActions';
+
+import { uniqueKey } from '../../__data__/utils';
 
 export const ChatDropdown = ({ open, onClose }) => {
     const chatDropdownRef = useRef(null);
 
     const dispatch = useDispatch();
 
-    const { chats, activeId } = useSelector((state) => state.messageReducer);
+    const { chats } = useSelector((state) => state.messageReducer);
 
     useEffect(() => {
         const handleClick = (e) => {
@@ -23,10 +24,9 @@ export const ChatDropdown = ({ open, onClose }) => {
         };
     }, [open, onClose]);
 
-    const handlePickChat = (id) => {
-        dispatch(setActiveIdAction(id));
-        console.log(activeId);
-    };
+    const handlePickChat = (id) => dispatch(setActiveIdAction(id));
+
+    const handleAddNewChat = () => dispatch(addNewChat(chats.length + 1));
 
     return (
         <div ref={chatDropdownRef} className='drop'>
@@ -42,7 +42,9 @@ export const ChatDropdown = ({ open, onClose }) => {
                         </div>
                     ))}
                 </div>
-                <button className='drop__create'>Создать новый чат</button>
+                <button className='drop__create' onClick={handleAddNewChat}>
+                    Создать новый чат
+                </button>
             </div>
         </div>
     );

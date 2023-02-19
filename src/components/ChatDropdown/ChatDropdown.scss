@@ -25,6 +25,20 @@
         margin-bottom: 10px;
     }
 
+    &__chats::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &__chats::-webkit-scrollbar-track {
+        background-color: #fff;
+        border-radius: 20px;
+    }
+
+    &__chats::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: #7a7a7d;
+    }
+
     &__create {
         width: 432px;
         height: 42px;

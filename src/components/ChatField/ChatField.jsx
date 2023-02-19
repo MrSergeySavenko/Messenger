@@ -1,25 +1,28 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewMessege, addTime } from '../../store/messageReduser';
-import { getActiveChat, getContinedTime, uniqueKey } from '../../utils';
-import { getRandomMes } from '../../utils/index';
+import { getActiveChat, getContinedTime, uniqueKey } from '../../__data__/utils';
+import { getRandomMes } from '../../__data__/utils/index';
 import moment from 'moment/moment';
+import { addNewMessege } from '../../__data__/actions/messageActions';
 
 export const ChatField = () => {
+    const [value, setValue] = useState('');
+    const [active, setActive] = useState(false);
+
     const dispatch = useDispatch();
 
     const { chats, activeId } = useSelector((state) => state.messageReducer);
 
-    const [value, setValue] = useState('');
-
     const addMessege = () => {
         if (value !== '') {
-            dispatch(addNewMessege(value));
+            dispatch(addNewMessege({ message: value, time: moment().format() }));
             setValue('');
-            dispatch(addTime(moment().format()));
-            console.log(chats.time);
+            setActive(true);
+            setTimeout(() => {
+                dispatch(addNewMessege({ message: getRandomMes(), time: moment().format() }));
+                setActive(false);
+            }, 2000);
         }
-        setTimeout(() => dispatch(addNewMessege(getRandomMes(10))), 2000);
     };
 
     return (
@@ -29,7 +32,7 @@ export const ChatField = () => {
                     <div key={uniqueKey(message, i)} className='field__mes'>
                         <p className='field__text'>{message}</p>
                         <p className='field__time' type='time'>
-                            {chats.time}
+                            {getContinedTime(getActiveChat(chats, activeId).time[i])}
                         </p>
                     </div>
                 ))}
@@ -41,9 +44,13 @@ export const ChatField = () => {
                     onChange={(e) => setValue(e.target.value)}
                     placeholder={'Напишите что-нибудь'}
                 />
-                <button className='field__but' onClick={addMessege}>
-                    ОТПРАВИТЬ
-                </button>
+                {active === false ? (
+                    <button className='field__but' onClick={addMessege}>
+                        ОТПРАВИТЬ
+                    </button>
+                ) : (
+                    <button className='field__but-active'>ОТПРАВИТЬ</button>
+                )}
             </div>
         </div>
     );

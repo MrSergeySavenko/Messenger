@@ -4,9 +4,13 @@ export const uniqueKey = (name, i) => `${name}+${i}`;
 
 export const getActiveChat = (chats, activeId) => chats?.filter((chat) => chat.id === activeId)[0];
 
-export const getContinedTime = () => {};
+export const getContinedTime = (serverTime) => (serverTime ? moment(serverTime).format('HH:mm') : '');
 
-export const getRandomMes = (max) => botAnswer[Math.floor(Math.random() * max)];
+export const getRandomMes = () => botAnswer[Math.floor(Math.random() * botAnswer.length - 1)];
+
+export const getRandomId = () => 'active' + new Date().getTime();
+
+export const getRandomChatName = (length) => 'Чат ' + length;
 
 const botAnswer = [
     'Мне кажется ты перепутал',

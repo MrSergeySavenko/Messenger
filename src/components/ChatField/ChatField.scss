@@ -11,10 +11,25 @@
         height: 364px;
         margin-bottom: 41px;
         position: relative;
+        overflow-y: scroll;
     }
 
     &__messege:nth-child(2n + 1) {
         align-items: flex-end;
+    }
+
+    &__messege::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &__messege::-webkit-scrollbar-track {
+        background-color: #fff;
+        border-radius: 20px;
+    }
+
+    &__messege::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: #7a7a7d;
     }
 
     &__mes {
@@ -87,6 +102,18 @@
         background-color: #336cff;
         border-radius: 8px;
         color: #fff;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        border: none;
+    }
+
+    &__but-active {
+        width: 153px;
+        height: 48px;
+        background-color: #e4e4e4;
+        border-radius: 8px;
+        color: #b5b5b5;
         font-weight: 500;
         font-size: 14px;
         line-height: 17px;

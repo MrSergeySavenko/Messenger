@@ -1,19 +1,20 @@
+import {
+    ADD_NEW_CHAT,
+    ADD_NEW_MESSEGE,
+    GET_CHATS,
+    GET_FAILURE,
+    GET_LOADING,
+    SET_ACTIVE_ID,
+} from '../actions/messageActions';
+import { getRandomChatName, getRandomId } from '../utils';
+
 const defaultState = {
     chats: [],
     isLoading: true,
     isFalure: false,
     error: [],
     activeId: '',
-    id: 0,
-    time: [],
 };
-
-const GET_CHATS = 'GET_CHATS';
-const GET_LOADING = 'GET_LOADING';
-const GET_FAILURE = 'GET_FAILURE';
-const SET_ACTIVE_ID = 'SET_ACTIVE_ID';
-const ADD_NEW_MESSEGE = 'ADD_NEW_MESSEGE';
-const ADD_TIME = 'ADD_TIME';
 
 export const messageReducer = (state = defaultState, action) => {
     switch (action.type) {
@@ -31,29 +32,29 @@ export const messageReducer = (state = defaultState, action) => {
                 chats: [
                     ...state.chats.map((chat) =>
                         chat.id === state.activeId
-                            ? { ...chat, messeges: [...chat.messeges, action.payload] }
+                            ? {
+                                  ...chat,
+                                  messeges: [...chat.messeges, action.payload.message],
+                                  time: [...chat.time, action.payload.time],
+                              }
                             : chat
                     ),
                 ],
             };
-        case ADD_TIME:
+        case ADD_NEW_CHAT:
             return {
                 ...state,
                 chats: [
-                    ...state.chats.map((chat) =>
-                        chat.id === state.activeId ? { ...chat, time: [...chat.time, action.payload] } : chat
-                    ),
+                    ...state.chats,
+                    {
+                        id: getRandomId(),
+                        chatName: getRandomChatName(action.payload),
+                        messeges: [],
+                        time: [],
+                    },
                 ],
             };
-
         default:
             return { ...state };
     }
 };
-
-export const getLoadingAction = () => ({ type: GET_LOADING });
-export const getChatsAction = (payload) => ({ type: GET_CHATS, payload });
-export const getFailureAction = (payload) => ({ type: GET_FAILURE, payload });
-export const setActiveIdAction = (payload) => ({ type: SET_ACTIVE_ID, payload });
-export const addNewMessege = (payload) => ({ type: ADD_NEW_MESSEGE, payload });
-export const addTime = (payload) => ({ type: ADD_TIME, payload });
