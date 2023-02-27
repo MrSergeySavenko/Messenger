@@ -4,10 +4,11 @@ import { getActiveChat, getContinedTime, uniqueKey } from '../../__data__/utils'
 import { getRandomMes } from '../../__data__/utils/index';
 import moment from 'moment/moment';
 import { addNewMessege } from '../../__data__/actions/messageActions';
+import { Button } from '../ChatButton/ChatButton';
 
 export const ChatField = () => {
     const [value, setValue] = useState('');
-    const [active, setActive] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -17,10 +18,10 @@ export const ChatField = () => {
         if (value !== '') {
             dispatch(addNewMessege({ message: value, time: moment().format() }));
             setValue('');
-            setActive(true);
+            setDisabled(true);
             setTimeout(() => {
                 dispatch(addNewMessege({ message: getRandomMes(), time: moment().format() }));
-                setActive(false);
+                setDisabled(false);
             }, 2000);
         }
     };
@@ -44,13 +45,11 @@ export const ChatField = () => {
                     onChange={(e) => setValue(e.target.value)}
                     placeholder={'Напишите что-нибудь'}
                 />
-                {active === false ? (
-                    <button className='field__but' onClick={addMessege}>
+                <div className='field__button'>
+                    <Button onClick={addMessege} disabled={disabled}>
                         ОТПРАВИТЬ
-                    </button>
-                ) : (
-                    <button className='field__but-active'>ОТПРАВИТЬ</button>
-                )}
+                    </Button>
+                </div>
             </div>
         </div>
     );

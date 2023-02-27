@@ -41,7 +41,8 @@
 
     &__create {
         width: 432px;
-        height: 42px;
+        min-height: 42px;
+        padding: 13px auto;
         background: #336cff;
         border-radius: 8px;
         border-color: #336cff;

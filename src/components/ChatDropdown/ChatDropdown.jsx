@@ -1,11 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewChat, setActiveIdAction } from '../../__data__/actions/messageActions';
 
 import { uniqueKey } from '../../__data__/utils';
+import { Button } from '../ChatButton/ChatButton';
 
 export const ChatDropdown = ({ open, onClose }) => {
     const chatDropdownRef = useRef(null);
+    const [disabled, setDisabled] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -42,9 +44,9 @@ export const ChatDropdown = ({ open, onClose }) => {
                         </div>
                     ))}
                 </div>
-                <button className='drop__create' onClick={handleAddNewChat}>
+                <Button onClick={handleAddNewChat} disabled={disabled}>
                     Создать новый чат
-                </button>
+                </Button>
             </div>
         </div>
     );

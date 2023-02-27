@@ -54,6 +54,7 @@
         line-height: 22px;
         display: flex;
         align-items: flex-end;
+        margin-left: 3px;
     }
 
     &__mes:last-child {
@@ -72,12 +73,15 @@
 
     &__text {
         color: #000;
+        max-width: 822px;
+        word-wrap: break-word;
     }
 
     &__form {
+        width: 100%;
         height: 48px;
-        flex-wrap: nowrap;
-        display: inline-block;
+        display: flex;
+        justify-content: space-between;
     }
 
     &__input {
@@ -87,7 +91,7 @@
         border-radius: 8px;
         border: none;
         padding-left: 8px;
-        margin-right: 24px;
+        outline: none;
     }
 
     &__input::placeholder {
@@ -96,16 +100,9 @@
         line-height: 22px;
     }
 
-    &__but {
+    &__button {
         width: 153px;
         height: 48px;
-        background-color: #336cff;
-        border-radius: 8px;
-        color: #fff;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 17px;
-        border: none;
     }
 
     &__but-active {
