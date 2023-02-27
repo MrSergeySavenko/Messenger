@@ -22,11 +22,9 @@ export const NavBar = () => {
         <div className='nav'>
             <p className='nav__head'>Чатик</p>
             <div>
-                <div className='nav__button'>
-                    <Button onClick={handleNavClick} disabled={isLoading}>
-                        ВСЕ ЧАТЫ
-                    </Button>
-                </div>
+                <Button onClick={handleNavClick} disabled={isLoading}>
+                    ВСЕ ЧАТЫ
+                </Button>
 
                 {open && <ChatDropdown open={open} onClose={onClose} />}
             </div>

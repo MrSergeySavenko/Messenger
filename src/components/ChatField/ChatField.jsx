@@ -45,11 +45,9 @@ export const ChatField = () => {
                     onChange={(e) => setValue(e.target.value)}
                     placeholder={'Напишите что-нибудь'}
                 />
-                <div className='field__button'>
-                    <Button onClick={addMessege} disabled={disabled}>
-                        ОТПРАВИТЬ
-                    </Button>
-                </div>
+                <Button onClick={addMessege} disabled={disabled}>
+                    ОТПРАВИТЬ
+                </Button>
             </div>
         </div>
     );

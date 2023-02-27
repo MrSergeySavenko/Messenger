@@ -6,7 +6,7 @@ export const getActiveChat = (chats, activeId) => chats?.filter((chat) => chat.i
 
 export const getContinedTime = (serverTime) => (serverTime ? moment(serverTime).format('HH:mm') : '');
 
-export const getRandomMes = () => botAnswer[Math.floor(Math.random() * botAnswer.length - 1)];
+export const getRandomMes = () => botAnswer[Math.floor(Math.random() * (botAnswer.length - 1 - 0 + 1) + 0)];
 
 export const getRandomId = () => 'active' + new Date().getTime();
 
